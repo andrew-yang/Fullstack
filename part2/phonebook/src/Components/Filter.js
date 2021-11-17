@@ -1,9 +1,8 @@
-export function filter(searchString, persons, filteredResultsCallBack){
-    console.log(persons)
+export function filter(searchString, persons){
     if(searchString.trim().length === 0){
-        filteredResultsCallBack(persons)
+        return persons
     }
-    filteredResultsCallBack(persons.filter((person) => person.name.toLowerCase().includes(searchString.trim().toLowerCase())))
+    return persons.filter((person) => person.name.toLowerCase().includes(searchString.trim().toLowerCase()))
 }
 
 const Filter = (props) => {
