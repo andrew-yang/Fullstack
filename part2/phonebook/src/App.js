@@ -59,7 +59,7 @@ const App = () => {
         updateState(newPersons)
         notify('Updated ' + newPerson.name, 'confirmation')
       }).catch(error => {
-        notify('Could not update ' + newPerson.name, 'error')
+        notify(error.response.data.error, 'error')
       })
       
     } else {
@@ -68,7 +68,10 @@ const App = () => {
         let newPersons = persons.concat(createdPerson)
         updateState(newPersons)
         notify('Created ' + newPerson.name, 'confirmation')
+      }).catch(error => {
+        notify(error.response.data.error, 'error')
       })
+    
     }
   }
 
@@ -82,7 +85,7 @@ const App = () => {
         updateState(newPersons)
         notify('Deleted ' + personToDelete.name, 'confirmation')
       }).catch(error => {
-        notify('Could not delete ' + personToDelete.name, 'error')
+        notify(error.response.data.error, 'error')
         personService.getAllEntries()
         .then(initialPersons => {
           setPersons(initialPersons)
