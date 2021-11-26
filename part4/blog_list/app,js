@@ -1,0 +1,16 @@
+const express = require('express')
+const cors = require('cors')
+const mongoose = require('mongoose')
+const config = require('./utils/config')
+const BlogsRouter = require('./controllers/BlogRouter')
+const app = express()
+
+mongoose.connect(process.env.MONGODB_URI)
+
+app.use(cors())
+app.use(express.json())
+app.use(BlogsRouter.apiRoot, BlogsRouter.router)
+
+const PORT = config.PORT || 3003
+
+module.exports = app
