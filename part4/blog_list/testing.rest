@@ -10,3 +10,13 @@ Content-Type: application/json
 }
 ###
 GET http://localhost:3003/api/blogs
+###
+DELETE http://localhost:3003/api/blogs/61a85d51c38af71ab0097463
+
+###
+PUT http://localhost:3003/api/blogs/61a85d51c38af71ab0097464
+Content-Type: application/json
+
+{
+    "author": "Andrew Yang"
+}
